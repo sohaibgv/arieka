@@ -7,16 +7,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Aan de Arieka website wordt gebouwd.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <div className="app-div">
+          <p>Voor meer informatie over opmaat gemaakte meubelstoffeerderij, marokkaanse banken, gordijnen, kussens en restoratie van antieke meubels; neem contact op met <a href="mailto:info@arieka.nl">info@arieka.nl</a> of bel en WhatsApp naar 0641827839 </p>
+        </div>
       </header>
     </div>
   );
