@@ -175,6 +175,7 @@ class InteriorLanding extends Component {
                                     <li><a href="#getstart">Starten</a></li>
                                     <li><a href="#about">Over ons</a></li>
                                     <li><a href="#services">Service details</a></li>
+                                    <li><a href="#uitgelicht">Uitgelicht</a></li>
                                     <li><a href="/gallery">Gallerij</a></li>
                                 </Scrollspy>
                             </nav>
@@ -378,7 +379,7 @@ class InteriorLanding extends Component {
                 {/* End Featured Service Area  */}
 
                 {/* Start Portfolio Area */}
-                <div className="portfolio-area ptb--120 bg_color--1" id="portfolio">
+                <div className="portfolio-area ptb--120 bg_color--1" id="uitgelicht">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6">
