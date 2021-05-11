@@ -144,7 +144,9 @@ font-family: 'Poppins', sans-serif;
     }
 }
 
-
+.bg_image--custom{
+    background-image: url(/assets/images/bg/bg-image-29-old.jpg);
+}
 
 @for $i from 1 through 80 {
     .font--#{$i}{

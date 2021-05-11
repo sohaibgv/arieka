@@ -5,162 +5,121 @@ import ScrollToTop from 'react-scroll-up';
 import { FiChevronUp } from "react-icons/fi";
 import Header from "../component/header/Header";
 import Footer from "../component/footer/FooterTwo";
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import { SRLWrapper } from "simple-react-lightbox";
 
+let N = 16, Z = 59, Y = 3, i = 1, Tabs1 = Array(N - 1), Tabs2 = Array(Z - 1), Tabs3 = Array(Y - 1);
 
-const PortfolioList = [
-    {
-        images: '7',
-        category: 'Freelancer',
-        title: 'The Language of Developer'
-    },
-    {
-        images: '1',
-        category: 'Freelancer',
-        title: 'The new Thinking for Design'
-    },
-    {
-        images: '2',
-        category: 'Freelancer',
-        title: 'The new Thinking for Design'
-    },
-    {
-        images: '3',
-        category: 'Freelancer',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        images: '8',
-        category: 'Freelancer',
-        title: 'You can see your Portfolio'
-    },
-    {
-        images: '9',
-        category: 'Freelancer',
-        title: 'Getting tickets to the big show'
-    },
-]
-
-
-const TabOne = [
-    {
-        image: '01',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-01.jpg',
-        category: 'Web Design',
-        title: 'Design is a creative part'
-    },
-    {
-        image: '02',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-02.jpg',
-        category: 'Mobile App',
-        title: 'The service provide for designer'
-    },
-    {
-        image: '03',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-        category: 'Web Design',
-        title: 'Mobile App landing Design'
-    },
-    {
-        image: '04',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-        category: 'Mobile App',
-        title: 'Logo Design creativity'
-    },
-    {
-        image: '05',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-        category: 'Web Design',
-        title: 'T-shirt design is the part of design'
-    },
-    {
-        image: '06',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-]
-
+while (i <= N) Tabs1[i++] = i;
+i = 1;
+while (i <= Z) Tabs2[i++] = i;
+i = 1;
+while (i <= Y) Tabs3[i++] = i;
+let couches = [], stofferingen = [], gordijnen = [];
 class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tab1: 0,
-            isOpen: false,
+            tab2: 0,
+            tab3: 0,
+            isOpen1: false,
+            isOpen2: false,
+            isOpen3: false,
         };
     }
+    importAll(r) {
+        return r.keys().map(r);
+    }
+
     render() {
-        const { tab1, isOpen } = this.state;
+        const { tab1, tab2, tab3, isOpen1, isOpen2, isOpen3 } = this.state;
+        console.log(Tabs1);
+        couches = this.importAll(require.context('../../public/assets/images/products/banken/', false, /\.(png|jpe?g|svg)$/));
+        stofferingen = this.importAll(require.context('../../public/assets/images/products/stofferingen/', false, /\.(png|jpe?g|svg)$/));
+        gordijnen = this.importAll(require.context('../../public/assets/images/products/gordijnen/', false, /\.(png|jpe?g|svg)$/));
+        console.log(couches);
         return (
             <div>
 
-            <PageHelmet pageTitle='Gallery' />
+                <PageHelmet pageTitle='Gallerij' />
 
-            {/* Start Header Area  */}
-            <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" />
-            {/* End Header Area  */}
-            
-            {/* Start Breadcrump Area */}
-            <Breadcrumb title={'Gallery'}   />
-            {/* End Breadcrump Area */}
+                {/* Start Header Area  */}
+                <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" />
+                {/* End Header Area  */}
 
-            {/* Start Page Wrapper  */}
-            <main className="page-wrapper">
+                {/* Start Breadcrump Area */}
+                <Breadcrumb title={'Gallery'} />
+                {/* End Breadcrump Area */}
 
-                {/* Start Portfolio Area  */}
-                <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
-                    <div className="container">
-                        <div className="row">
-                            {TabOne.map((value , index) => (
-                                <div className="col-lg-6" key={index}>
-                                    {isOpen && (
-                                        <Lightbox
-                                            mainSrc={TabOne[tab1].bigImage}
-                                            nextSrc={TabOne[(tab1 + 1) % TabOne.length]}
-                                            prevSrc={TabOne[(tab1 + TabOne.length - 1) % TabOne.length]}
-                                            onCloseRequest={() => this.setState({ isOpen: false })}
-                                            onMovePrevRequest={() =>
-                                            this.setState({
-                                                tab1: (tab1 + TabOne.length - 1) % TabOne.length,
-                                            })
-                                            }
-                                            onMoveNextRequest={() =>
-                                                this.setState({
-                                                    tab1: (tab1 + 1) % TabOne.length,
-                                                })
-                                            }
-                                        />
-                                    )}
-                                    <div className="item-portfolio-static">
-                                        <div onClick={() => this.setState({ isOpen: true, tab1: index })}>
-                                            <div className="portfolio-static">
-                                                <div className="thumbnail-inner">
-                                                    <div className="thumbnail">
-                                                        <a href="#portfolio-details">
-                                                            <img src={`/assets/images/portfolio/dp-portfolio-${value.image}.jpg`} alt="Portfolio Images"/>
-                                                        </a>
+                {/* Start Page Wrapper  */}
+                <main className="page-wrapper">
+
+                    {/* Start Portfolio Area  */}
+                    <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
+                        <div className="container">
+                            <div className="row">
+                                <Tabs forceRenderTabPanel={false}>
+                                    <TabList className="tab-style--1">
+                                        <Tab>Marokkaanse banken</Tab>
+                                        <Tab>Stofferingen</Tab>
+                                        <Tab>Gordijnen</Tab>
+                                    </TabList>
+
+                                    <TabPanel>
+                                        <SRLWrapper>
+                                            <div style={{ display: "flex", flexWrap: "wrap", marginRight: "-15px", marginLeft: "-15px" }}>
+                                                {couches.map((value, index) => (
+                                                    <div className="col-lg-4" key={index}>
+                                                        <div className="item-portfolio-static">
+                                                            <a href={value}>
+                                                                <img src={value} alt="Portfolio Images" />
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="content">
-                                                    <div className="inner">
-                                                        <p>{value.category}</p>
-                                                        <h4><a href="#portfolio-details">{value.title}</a></h4>
+                                                ))}</div>
+                                        </SRLWrapper>
+
+                                    </TabPanel>
+                                    <TabPanel >
+                                        <SRLWrapper>
+                                            <div style={{ display: "flex", flexWrap: "wrap", marginRight: "-15px", marginLeft: "-15px" }}>
+                                                {stofferingen.map((value, index) => (
+                                                    <div className="col-lg-4" key={index}>
+                                                        <div className="item-portfolio-static">
+                                                            <a href={value}>
+                                                                <img src={value} alt="Portfolio Images" />
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                                ))}</div>
+                                        </SRLWrapper>
+                                    </TabPanel>
+                                     <TabPanel >
+                                        <SRLWrapper>
+                                            <div style={{ display: "flex", flexWrap: "wrap", marginRight: "-15px", marginLeft: "-15px" }}>
+                                                {gordijnen.map((value, index) => (
+                                                    <div className="col-lg-4" key={index}>
+                                                        <div className="item-portfolio-static">
+                                                            <a href={value}>
+                                                                <img src={value} alt="Portfolio Images" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                ))}</div>
+                                        </SRLWrapper>
+                                    </TabPanel>
+                                </Tabs>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                {/* End Portfolio Area  */}
+                    {/* End Portfolio Area  */}
 
-                {/* Start Portfolio Area  */}
-                <div className="creative-portfolio-wrapper ptb--120 bg_color--1">
+                    {/* Start Portfolio Area  */}
+                    {/* <div className="creative-portfolio-wrapper ptb--120 bg_color--1">
                     <div className="container plr--10">
                         <div className="row row--5">
                             {PortfolioList.map((value , i ) => (
@@ -183,24 +142,24 @@ class Gallery extends Component {
                             ))}
                         </div>
                     </div>
+                </div> */}
+                    {/* End Portfolio Area  */}
+
+                </main>
+                {/* End Page Wrapper  */}
+
+                {/* Start Back To Top */}
+                <div className="backto-top">
+                    <ScrollToTop showUnder={160}>
+                        <FiChevronUp />
+                    </ScrollToTop>
                 </div>
-                {/* End Portfolio Area  */} 
+                {/* End Back To Top */}
 
-            </main>
-            {/* End Page Wrapper  */}
-
-            {/* Start Back To Top */}
-            <div className="backto-top">
-                <ScrollToTop showUnder={160}>
-                    <FiChevronUp />
-                </ScrollToTop>
-            </div>
-            {/* End Back To Top */}
-            
-            {/* Start Footer Area  */}
-            <Footer />
-            {/* End Footer Area  */}                
-            </div>
+                {/* Start Footer Area  */}
+                <Footer />
+                {/* End Footer Area  */}
+            </div >
         )
     }
 }

@@ -34,7 +34,7 @@ class Contact extends Component {
                             <div className="col-lg-12">
                                 <div className="rn-page-title text-center pt--100">
                                     <h2 className="title theme-gradient">Contact</h2>
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                                    <p>Voor het aanvragen van een offerte, of andere vragen kunt u contact met ons opnemen.</p>
                                 </div>
                             </div>
                         </div>
@@ -97,9 +97,9 @@ class Contact extends Component {
                 {/* End Contact Top Area  */}
 
                 {/* Start Contact Page Area  */}
-                {/* <div className="rn-contact-page ptb--120 bg_color--1">
+                <div className="rn-contact-page ptb--120 bg_color--1">
                     <ContactTwo />
-                </div> */}
+                </div>
                 {/* End Contact Page Area  */}
 
                 {/* Start Contact Map  */}

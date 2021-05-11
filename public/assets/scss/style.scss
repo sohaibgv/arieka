@@ -76,7 +76,9 @@
 @import 'default/animations';
 @import 'default/shortcode';
 @import 'default/spacing';
-
+*{
+	scroll-behavior: smooth !important;
+}
 
 
 /**************************************

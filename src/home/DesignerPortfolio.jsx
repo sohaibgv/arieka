@@ -3,7 +3,7 @@ import ScrollToTop from 'react-scroll-up';
 import TextLoop from "react-text-loop";
 import FooterTwo from "../component/footer/FooterTwo";
 import { FiChevronUp} from "react-icons/fi";
-import Header from "../component/header/HeaderFour";
+import Header from "../component/header/Header";
 import TabThree from "../elements/tab/TabThree";
 import Helmet from "../component/common/Helmet";
 
@@ -22,7 +22,7 @@ const DesignerPortfolio = () => {
         <div>
             <Helmet pageTitle="Designer Portfolio" />
             {/* Start Header Area  */}
-            <Header headerPosition="header--static" logo="symbol-dark" color="color-black"/>
+            <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" />
             {/* End Header Area  */}
 
             <div className="slider-wrapper">

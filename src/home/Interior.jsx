@@ -26,43 +26,51 @@ const PortfolioList2 = [
     {
         image: 'image-1',
         category: 'Bedden',
-        title: 'Op maat gemaakte bedden'
+        title: 'Op maat gemaakte bedden',
+        url: 'banken'
     },
     {
         image: 'image-8',
         category: 'Marokkaanse banken',
-        title: 'Op maat gemaakte marokkaanse banken (Sedari)'
+        title: 'Op maat gemaakte marokkaanse banken (Sedari)',
+        url: 'banken'
     }
     , {
         image: 'image-3',
         category: 'Horeca',
-        title: 'Op maat gemaakte horeca interieur'
+        title: 'Op maat gemaakte horeca interieur',
+        url: 'stofferingen'
     },
     {
         image: 'image-5',
         category: 'Moderne banken',
-        title: 'Op maat gemaakte moderne banken'
+        title: 'Op maat gemaakte moderne banken',
+        url: 'banken'
     },
 
 
     {
         image: 'image-6',
         category: 'Marokkaanse banken',
-        title: 'Op maat gemaakte marokkaanse banken (Sedari)'
+        title: 'Op maat gemaakte marokkaanse banken (Sedari)',
+        url: 'banken'
     }, {
         image: 'image-2',
         category: 'Bedden',
-        title: 'Op maat gemaakte bedden'
+        title: 'Op maat gemaakte bedden',
+        url: 'stofferingen'
     },
     ,
     {
         image: 'image-7',
         category: 'Marokkaanse banken',
-        title: 'Op maat gemaakte marokkaanse banken (Sedari)'
+        title: 'Op maat gemaakte marokkaanse banken (Sedari)',
+        url: 'banken'
     }, {
         image: 'image-4',
         category: 'Moderne banken',
-        title: 'Op maat gemaakte moderne banken'
+        title: 'Op maat gemaakte moderne banken',
+        url: 'banken'
     },
 
 ]
@@ -73,15 +81,16 @@ const starndardService = [
         image: 'featured-chair',
         title: 'Stofferingen',
         description: 'Voor al onze stofferingen.',
+        url: 'stofferingen',
     },
     {
         image: 'featured-couch',
         title: 'Marokkaanse banken',
-        description: 'Een groot assortiment aan marokkaanse banken. ',
+        description: 'Een groot assortiment aan marokkaanse banken. ', url: 'banken',
     }, {
         image: 'featured-curtains',
         title: 'Gordijnen',
-        description: 'Op maat gemaakte gordijnen naar uw wens.',
+        description: 'Op maat gemaakte gordijnen naar uw wens.', url: 'gordijnen',
     }
 
 ]
@@ -145,7 +154,7 @@ class InteriorLanding extends Component {
         }
         return (
             <Fragment>
-                <Helmet pageTitle="Interior Design" />
+                <Helmet pageTitle="Arieka Meubelstoffeerderij" />
 
                 {/* Start Header Area  */}
                 <header className="header-area formobile-menu header--fixed default-color">
@@ -160,18 +169,17 @@ class InteriorLanding extends Component {
                         </div>
                         <div className="header-right">
                             <nav className="mainmenunav d-lg-block">
-                                <Scrollspy className="mainmenu" items={['home', 'service', 'getstart', 'about', 'team', 'testimonial', 'portfolio']} currentClassName="is-current" offset={-200}>
+                                <Scrollspy className="mainmenu" items={['home', 'service', 'getstart', 'about', 'services', 'portfolio']} currentClassName="is-current" offset={-200}>
                                     <li><a href="#home">Home</a></li>
                                     <li><a href="#service">Service</a></li>
-                                    <li><a href="#getstart">Get Start</a></li>
-                                    <li><a href="#about">About</a></li>
-                                    <li><a href="#team">Team</a></li>
-                                    <li><a href="#testimonial">Testimonial</a></li>
-                                    <li><a href="#portfolio">Portfolio</a></li>
+                                    <li><a href="#getstart">Starten</a></li>
+                                    <li><a href="#about">Over ons</a></li>
+                                    <li><a href="#services">Service details</a></li>
+                                    <li><a href="/gallery">Gallerij</a></li>
                                 </Scrollspy>
                             </nav>
                             <div className="header-btn">
-                                <a className="rn-btn" href="https://themeforest.net/checkout/from_item/25457315?license=regular">
+                                <a className="rn-btn" href="/contact">
                                     <span>Offerte aanvragen</span>
                                 </a>
                             </div>
@@ -249,9 +257,10 @@ class InteriorLanding extends Component {
                         <div className="row">
                             <div className="col-lg-8">
                                 <div className="inner text-left">
-                                    <span>READY TO DO THIS</span>
-                                    <h2>Let's get to work</h2>
+                                    <span>Sta klaar</span>
+                                    <h2>Tijd om te starten</h2>
                                     <a className="rn-button-style--2 mt--70 mt_sm--30 mt_md--30" href="/contact"><span>Offerte aanvragen</span></a>
+                                    <a className="rn-button-style--2 rn-btn-dark mt--70 mt_sm--30 mt_md--30" href="/gallery"><span>Foto's bekijken</span></a>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +334,7 @@ class InteriorLanding extends Component {
                 {/* End Testimonial Area */}
 
                 {/* Start Featured Service Area  */}
-                <div className="rn-featured-service-area pt--90 pb--120 bg_color--5">
+                <div className="rn-featured-service-area pt--90 pb--120 bg_color--5" id="services">
                     <div className="container">
                         <div className="row">
 
@@ -351,9 +360,9 @@ class InteriorLanding extends Component {
                                                     <img src={`/assets/images/featured/${value.image}.jpg`} alt="Corporate Images" className="standard-service-images" />
                                                 </div>
                                                 <div className="content">
-                                                    <h3><a href="/service-details">{value.title}</a></h3>
+                                                    <h3><a href={`/service-details/${value.url}`}>{value.title}</a></h3>
                                                     <p>{value.description}</p>
-                                                    <a className="btn-transparent rn-btn-dark" href="/service-details"><span className="text">Lees meer</span></a>
+                                                    <a className="btn-transparent rn-btn-dark" href={`/service-details/${value.url}`}><span className="text">Lees meer</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -392,9 +401,9 @@ class InteriorLanding extends Component {
                                         <div className="content">
                                             <div className="inner">
                                                 <p>{value.category}</p>
-                                                <h4><a href="/portfolio-details">{value.title}</a></h4>
+                                                <h4><a href={`/service-details/${value.url}`}>{value.title}</a></h4>
                                                 <div className="portfolio-button">
-                                                    <a className="rn-btn" href="/portfolio-details">Meer...</a>
+                                                    <a className="rn-btn" href={`/service-details/${value.url}`}>Meer...</a>
                                                 </div>
                                             </div>
                                         </div>
