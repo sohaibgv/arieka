@@ -64,6 +64,10 @@ import * as serviceWorker from './serviceWorker';
 
 
 class Root extends Component {
+    importAll(r) {
+        return r.keys().map(r);
+    }
+
     render() {
         return (
             <BrowserRouter basename={'/'}>
@@ -86,16 +90,19 @@ class Root extends Component {
                     <Route exact path={`${process.env.PUBLIC_URL}/dark-portfolio-landing`} component={DarkPortfolioLanding} />
                     <Route exact path={`${process.env.PUBLIC_URL}/designer-portfolio`} component={DesignerPortfolio} />
                     <Route exact path={`${process.env.PUBLIC_URL}/creative-portfolio`} component={CreativePortfolio} /> */}
-                   
+
                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={InteriorLanding} />
                     <Route exact path={`${process.env.PUBLIC_URL}/service-details/stofferingen`} >
-                        <ServiceDetails title="Stofferingen" img="restored-chair.jpg" details="Nadat u op de werkplaats bent langsgekomen krijgt u enkele dagen de tijd om een stof uit te kiezen."
+                        <ServiceDetails title="Stofferingen" img="restored-chair.jpg" 
+                            fotos={this.importAll(require.context('../public/assets/images/products/stofferingen/', false, /\.(png|jpe?g|svg)$/))}
+                        details="Wij zijn gespecialiseerd in alle soorten (her)stofferingen. Zowel moderne als klassieke meubels,boten,campers en caravans. Zo hebben wij ook grote kennis van leerproducten. Tevens herstellen wij oude binnenwerken met koudschuim of veren. Rug- of heupklachten? Wij verzorgen gelijk een aanpassingen in de rug &amp; zitting. meubels krijgen een 2e leven en worden beter dan nieuw. Nadat u op de werkplaats bent langsgekomen krijgt u enkele dagen de tijd om een stof uit te kiezen."
                             steps={["Wij beginnen door het oude stof eraf te halen", "Vervolgens hervullen wij schuim waar nodig",
                                 "Zodra het meubel er weer van binnen goed uitziet zullen wij de nieuwe stof erop zetten.",
                                 "Duur is afhankelijk van het meubel en de hoeveelheid."]} />
                     </Route>
                     <Route exact path={`${process.env.PUBLIC_URL}/service-details/banken`} >
                         <ServiceDetails title="Marokkaanse banken" img="moroccan_couch.jpg"
+                            details="Marokkaans Interieur heeft van oudsher een eigen, verfijnde en smaakvolle uitstraling. Interieur dat in eeuwen aan de hoven van sultans en viziers is ontwikkeld. Een afgewogen mix van kleuren, materialen en vormen creëert een aangename en rustgevende wereld die uw woning kan zijn. Wij bieden u hedendaags en modern interieur met een Koninklijke uitstraling."
                             steps={["Na het ontvangen van de afmetingen zitten we samen met de klant om de juiste productsoorten te bespreken.",
                                 "Wij bespreken onderwerpen zoals het hout, de stof, aantal kussens, soort kussens, en stellen een eerlijke prijs op.",
                                 "We geven een tijdsindicatie en bieden de mogelijkheid om de bank bij u in elkaar te komen zetten.",
@@ -103,6 +110,7 @@ class Root extends Component {
                     </Route>
                     <Route exact path={`${process.env.PUBLIC_URL}/service-details/gordijnen`} >
                         <ServiceDetails title="Gordijnen" img="curtain.jpg"
+                            details="Je huis is de plek waar je tot rust komt na een drukke dag: je wilt je er thuis voelen. De kleuren van je interieur spelen daarbij een belangrijke rol. Met de kleur  van gordijnen leg je de basis voor je inrichting. Arieka heeft een ruime keuze aan dikke en dunnere gordijnstof. Omdat je je gordijnen op maat laat maken, bepaal jij de lengte en breedte van de gordijnen en de soort plooi. Met de gordijnstoffen van Arieka is één ding zeker: je krijgt goede kwaliteit voor de laagste prijs. Laat je gordijnen op maat maken."
                             steps={["Wij dienen de afmetingen van de ruimte voor de gordijnen te ontvangen.",
                                 "Als u een afspraak met ons maakt kunnen we langs komen en dit voor u doen.",
                                 "Nadat we de afmetingen hebben kiest u een stof en design uit.",

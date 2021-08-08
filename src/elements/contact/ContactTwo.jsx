@@ -63,7 +63,7 @@ class ContactTwo extends Component {
                                             id="item01"
                                             value={this.state.rnName}
                                             onChange={(e) => { this.setState({ rnName: e.target.value }); }}
-                                            placeholder="Your Name *"
+                                            placeholder="Naam *"
                                         />
                                     </label>
 
@@ -74,7 +74,7 @@ class ContactTwo extends Component {
                                             id="item02"
                                             value={this.state.rnEmail}
                                             onChange={(e) => { this.setState({ rnEmail: e.target.value }); }}
-                                            placeholder="Your email *"
+                                            placeholder="Email *"
                                         />
                                     </label>
 
@@ -85,7 +85,7 @@ class ContactTwo extends Component {
                                             id="item03"
                                             value={this.state.rnSubject}
                                             onChange={(e) => { this.setState({ rnSubject: e.target.value }); }}
-                                            placeholder="Write a Subject"
+                                            placeholder="Onderwerp"
                                         />
                                     </label>
                                     <label htmlFor="item04">
@@ -95,10 +95,10 @@ class ContactTwo extends Component {
                                             name="message"
                                             value={this.state.rnMessage}
                                             onChange={(e) => { this.setState({ rnMessage: e.target.value }); }}
-                                            placeholder="Your Message"
+                                            placeholder="Bericht"
                                         />
                                     </label>
-                                    <button className="rn-button-style--2 btn-solid" type="submit" value="submit" name="submit" id="mc-embedded-subscribe">Submit</button>
+                                    <button className="rn-button-style--2 btn-solid" type="submit" value="submit" name="submit" id="mc-embedded-subscribe">Verzenden</button>
                                 </form>
                             </div>
                         </div>

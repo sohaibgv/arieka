@@ -5,13 +5,32 @@ import GoogleMapReact from 'google-map-react';
 import ContactTwo from "../elements/contact/ContactTwo";
 import BrandTwo from "../elements/BrandTwo";
 import ScrollToTop from 'react-scroll-up';
-import { FiChevronUp } from "react-icons/fi";
 import Header from "../component/header/Header";
-import Footer from "../component/footer/Footer";
+import WhatsApp from "../../public/assets/images/icons/whatsapp.png";
+import Gmail from "../../public/assets/images/icons/gmail.png";
+import Locatie from "../../public/assets/images/icons/locatie.png";
+import Facebook from "../../public/assets/images/icons/facebook.png";
+import Instagram from "../../public/assets/images/icons/instagram.png";
+import Arieka from "../../public/assets/images/logo/logo-dark.png";
+import FooterTwo from "../component/footer/FooterTwo";
+import Scrollspy from 'react-scrollspy';
+import { FiChevronUp, FiX, FiMenu } from "react-icons/fi";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Contact extends Component {
+    constructor(props) {
+        super(props)
+        this.menuTrigger = this.menuTrigger.bind(this);
+        this.CLoseMenuTrigger = this.CLoseMenuTrigger.bind(this);
+    }
+
+    menuTrigger() {
+        document.querySelector('.header-wrapper').classList.toggle('menu-open')
+    }
+    CLoseMenuTrigger() {
+        document.querySelector('.header-wrapper').classList.remove('menu-open')
+    }
     static defaultProps = {
         center: {
             lat: 59.95,
@@ -25,7 +44,49 @@ class Contact extends Component {
             <React.Fragment>
                 <PageHelmet pageTitle='Contact' />
 
-                <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" />
+                {/* Start Header Area  */}
+                <header className="header-area formobile-menu header--fixed default-color">
+                    <div className="header-wrapper" id="header-wrapper">
+                        <div className="header-left">
+                            <div className="logo">
+                                <a href="/">
+                                    <img className="logo-1" src="/assets/images/logo/logo-light.png" alt="Logo Images" />
+                                    <img className="logo-2" src="/assets/images/logo/logo-dark.png" alt="Logo Images" />
+                                </a>
+                            </div>
+                        </div>
+                        <div className="header-right">
+                            <nav className="mainmenunav d-lg-block">
+                                <Scrollspy className="mainmenu" items={['home', 'service', 'getstart', 'about', 'services', 'portfolio']} currentClassName="is-current" offset={-200}>
+                                    <li><a href="/#home">Home</a></li>
+                                    <li><a href="/#service">Service</a></li>
+                                    <li><a href="/#getstart">Starten</a></li>
+                                    <li><a href="/#about">Over ons</a></li>
+                                    <li><a href="/#services">Service details</a></li>
+                                    <li><a href="/#uitgelicht">Uitgelicht</a></li>
+                                    <li><a href="/gallery">Galerij</a></li>
+                                    <li><a href="/service-details/stofferingen">Stofferingen</a></li>
+                                    <li><a href="/service-details/banken">Banken</a></li>
+                                    <li><a href="/service-details/gordijnen">Gordijnen</a></li>
+                                </Scrollspy>
+                            </nav>
+                            <div className="header-btn">
+                                <a className="rn-btn" href="/contact">
+                                    <span>Offerte aanvragen</span>
+                                </a>
+                            </div>
+                            {/* Start Humberger Menu  */}
+                            <div className="humberger-menu d-block d-lg-none pl--20">
+                                <span onClick={this.menuTrigger} className="menutrigger text-white"><FiMenu /></span>
+                            </div>
+                            {/* End Humberger Menu  */}
+                            <div className="close-menu d-block d-lg-none">
+                                <span onClick={this.CLoseMenuTrigger} className="closeTrigger"><FiX /></span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
                 <div className="rn-page-title-area pt--120 pb--190 bg_image bg_image--17" data-black-overlay="6">
@@ -50,47 +111,95 @@ class Contact extends Component {
                         <div className="row">
                             {/* Start Single Address  */}
                             <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                                <div className="rn-address">
-                                    <div className="icon">
-                                        <FiHeadphones />
+                                <a href="tel:+31 641827839">
+                                    <div className="rn-address">
+                                        <div className="icon">
+                                            <img src={WhatsApp} alt="" />
+                                        </div>
+                                        <div className="inner">
+                                            <h4 className="title">WhatsApp en Bellen</h4>
+                                            <p>+31 641827839</p>
+                                        </div>
                                     </div>
-                                    <div className="inner">
-                                        <h4 className="title">Bel en WhatsApp</h4>
-                                        <p><a href="tel:+057 254 365 456">+31 641827839</a></p>
+                                </a>
+                            </div>
+                            {/* Start Single Address  */}
+                            <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="https://www.facebook.com/arieka.arieka.10" target="_blank">
+                                    <div className="rn-address">
+                                        <div className="icon" style={{ border: "none" }}>
+                                            <img src={Facebook} alt="" />
+                                        </div>
+                                        <div className="inner">
+                                            <h4 className="title">Facebook</h4>
+                                            <p>facebook.com/arieka</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             {/* End Single Address  */}
 
+                            <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="https://www.instagram.com/meubelstoffeerderij_arieka/" target="_blank">
+                                    <div className="rn-address">
+                                        <div className="icon" style={{ border: "none" }}>
+                                            <img style={{ maxWidth: "82%" }} src={Instagram} alt="" />
+                                        </div>
+                                        <div className="inner">
+                                            <h4 className="title">Instagram</h4>
+                                            <p>instagram.com/arieka</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="row">
                             {/* Start Single Address  */}
                             <div className="col-lg-4 col-md-6 col-sm-6 col-12 mt_mobile--50">
-                                <div className="rn-address">
-                                    <div className="icon">
-                                        <FiMail />
+                                <a href="mailto:ariekameubels@gmail.com ">
+                                    <div className="rn-address">
+                                        <div className="icon">
+                                            <img style={{ maxWidth: "82%" }} src={Gmail} alt="" />
+                                        </div>
+                                        <div className="inner">
+                                            <h4 className="title">Email</h4>
+                                            <p>ariekameubels@gmail.com </p>
+                                            {/* <p><a href="mailto:info@arieka.nl">info@arieka.nl (tijdelijk inactief)</a></p> */}
+                                        </div>
                                     </div>
-                                    <div className="inner">
-                                        <h4 className="title">Email</h4>
-                                        <p><a href="mailto:ariekameubels@gmail.com ">ariekameubels@gmail.com </a></p>
-                                        {/* <p><a href="mailto:info@arieka.nl">info@arieka.nl (tijdelijk inactief)</a></p> */}
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                             {/* End Single Address  */}
-
+                            <div className="col-lg-4 col-md-6 col-sm-6 col-12 mt_md--50 mt_sm--50">
+                                <a href="https://www.arieka.nl">
+                                    <div className="rn-address">
+                                        <div className="icon">
+                                            <img src={Arieka} alt="" />
+                                        </div>
+                                        <div className="inner">
+                                            <h4 className="title">Arieka website</h4>
+                                            <p>www.arieka.nl</p>
+                                            {/* <p><a href="mailto:info@arieka.nl">info@arieka.nl (tijdelijk inactief)</a></p> */}
+                                        </div>
+                                    </div>
+                                </a >
+                            </div>
                             {/* Start Single Address  */}
                             <div className="col-lg-4 col-md-6 col-sm-6 col-12 mt_md--50 mt_sm--50">
-                                <div className="rn-address">
-                                    <div className="icon">
-                                        <FiMapPin />
+                                <a href="https://goo.gl/maps/hgPE8xdeY6X2mghc7" target="_blank">
+                                    <div className="rn-address">
+                                        <div className="icon">
+                                            <img style={{ maxWidth: "50%" }} src={Locatie} alt="" />
+                                        </div>
+
+                                        <div className="inner">
+                                            <h4 className="title">Locatie</h4>
+                                            <p>Schipholweg 955  <br />2143CE Boesingheliede </p>
+                                        </div>
                                     </div>
-                                    <div className="inner">
-                                        <h4 className="title">Locatie</h4>
-                                        <p>Schipholweg 955  <br />2143CE Boesingheliede </p>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                             {/* End Single Address  */}
-
                         </div>
                     </div>
                 </div>
@@ -132,6 +241,7 @@ class Contact extends Component {
                     </div>
                 </div> */}
                 {/* End Brand Area */}
+                <FooterTwo />
 
                 {/* Start Back To Top */}
                 <div className="backto-top">

@@ -168,15 +168,18 @@ class InteriorLanding extends Component {
                             </div>
                         </div>
                         <div className="header-right">
-                            <nav className="mainmenunav d-lg-block">
-                                <Scrollspy className="mainmenu" items={['home', 'service', 'getstart', 'about', 'services', 'portfolio']} currentClassName="is-current" offset={-200}>
+                            <nav className="mainmenunav d-lg-block" onClick={()=>{this.CLoseMenuTrigger()}}>
+                                <Scrollspy className="mainmenu" items={['home', 'services', 'getstart', 'about', 'uitgelicht', 'service']} currentClassName="is-current" offset={-200}>
                                     <li><a href="#home">Home</a></li>
-                                    <li><a href="#service">Service</a></li>
+                                    <li><a href="#services">Service details</a></li>
                                     <li><a href="#getstart">Starten</a></li>
                                     <li><a href="#about">Over ons</a></li>
-                                    <li><a href="#services">Service details</a></li>
                                     <li><a href="#uitgelicht">Uitgelicht</a></li>
-                                    <li><a href="/gallery">Gallerij</a></li>
+                                    <li><a href="#service">Service</a></li>
+                                    <li><a href="/gallery">Galerij</a></li>
+                                    <li><a href="/service-details/stofferingen">Stofferingen</a></li>
+                                    <li><a href="/service-details/banken">Banken</a></li>
+                                    <li><a href="/service-details/gordijnen">Gordijnen</a></li>
                                 </Scrollspy>
                             </nav>
                             <div className="header-btn">
@@ -220,37 +223,50 @@ class InteriorLanding extends Component {
                 </div>
                 {/* End Slider Area   */}
 
-                {/* Start Service Area  */}
-                <div className="service-area creative-service-wrapper ptb--120 bg_color--1" id="service">
+                {/* Start Featured Service Area  */}
+                <div className="rn-featured-service-area pt--90 pb--120 bg_color--5" id="services">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-8">
-                                <div className="feature-area">
-                                    <span>Op maat gemaakte meubels en stoffeerderij</span>
-                                    <h3 className="title mt--20 fontWeight500 lineheight--1-8">Wij zijn gespecialiseerd in alle soorten (her)stofferingen. Zowel moderne als klassieke meubels, boten, campers, en caravans.</h3>
+
+                            {/* Start Single Service  */}
+                            <div className="col-lg-3 col-md-6 col-12 mt--30">
+                                <div className="section-title">
+                                    <h2 className="title">Services</h2>
+                                    <p>Bekijk de verschillende uitgelichte onderdelen van ons bedrijf!</p>
+                                    <div className="service-btn">
+                                        <a className="btn-transparent rn-btn-dark" href="/service"><span className="text">Offerte aanvragen</span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row service-one-wrapper mt--30">
-                            {ServiceListOne.map((val, i) => (
-                                <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12" key={i}>
-                                    <a href="/service-details">
-                                        <div className="service service__style--1">
-                                            <div className="icon">
-                                                <img src={`/assets/images/icons/${val.icon}`} alt="Service Icon" />
-                                            </div>
-                                            <div className="content">
-                                                <h4 className="title">{val.title}</h4>
-                                                <p>{val.description}</p>
+                            {/* End Single Service  */}
+
+                            {/* Start Single Service  */}
+                            <div className="col-lg-9">
+                                <div className="row">
+                                    {starndardService.map((value, index) => (
+                                        <div className="col-lg-4 col-md-4 mt--30" key={index}>
+                                            <div className="standard-service">
+                                                <div className="thumbnai">
+                                                    <img src={`/assets/images/featured/${value.image}.jpg`} alt="Corporate Images" className="standard-service-images" />
+                                                </div>
+                                                <div className="content">
+                                                    <h3><a href={`/service-details/${value.url}`}>{value.title}</a></h3>
+                                                    <p>{value.description}</p>
+                                                    <a className="btn-transparent rn-btn-dark" href={`/service-details/${value.url}`}><span className="text">Lees meer</span></a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    ))}
                                 </div>
-                            ))}
+
+                            </div>
+                            {/* End Single Service  */}
+
                         </div>
                     </div>
                 </div>
-                {/* End Service Area  */}
+                {/* End Featured Service Area  */}
+
 
                 {/* Start Call To Action Area  */}
                 <div className="call-to-action-wrapper call-to-action bg_image bg_image--30 text-white-wrapper ptb--180 ptb_lg--80 ptb_md--80 ptb_sm--80" id="getstart">
@@ -334,49 +350,6 @@ class InteriorLanding extends Component {
                 </div> */}
                 {/* End Testimonial Area */}
 
-                {/* Start Featured Service Area  */}
-                <div className="rn-featured-service-area pt--90 pb--120 bg_color--5" id="services">
-                    <div className="container">
-                        <div className="row">
-
-                            {/* Start Single Service  */}
-                            <div className="col-lg-3 col-md-6 col-12 mt--30">
-                                <div className="section-title">
-                                    <h2 className="title">Services</h2>
-                                    <p>Bekijk de verschillende uitgelichte onderdelen van ons bedrijf!</p>
-                                    <div className="service-btn">
-                                        <a className="btn-transparent rn-btn-dark" href="/service"><span className="text">Offerte aanvragen</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* End Single Service  */}
-
-                            {/* Start Single Service  */}
-                            <div className="col-lg-9">
-                                <div className="row">
-                                    {starndardService.map((value, index) => (
-                                        <div className="col-lg-4 col-md-4 mt--30" key={index}>
-                                            <div className="standard-service">
-                                                <div className="thumbnai">
-                                                    <img src={`/assets/images/featured/${value.image}.jpg`} alt="Corporate Images" className="standard-service-images" />
-                                                </div>
-                                                <div className="content">
-                                                    <h3><a href={`/service-details/${value.url}`}>{value.title}</a></h3>
-                                                    <p>{value.description}</p>
-                                                    <a className="btn-transparent rn-btn-dark" href={`/service-details/${value.url}`}><span className="text">Lees meer</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                            </div>
-                            {/* End Single Service  */}
-
-                        </div>
-                    </div>
-                </div>
-                {/* End Featured Service Area  */}
 
                 {/* Start Portfolio Area */}
                 <div className="portfolio-area ptb--120 bg_color--1" id="uitgelicht">
@@ -416,6 +389,36 @@ class InteriorLanding extends Component {
                 </div>
                 {/* End Portfolio Area */}
 
+
+                {/* Start Service Area  */}
+                <div className="service-area creative-service-wrapper ptb--120 bg_color--1" id="service">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-8">
+                                <div className="feature-area">
+                                    <span>Op maat gemaakte meubels en stoffeerderij</span>
+                                    <h3 className="title mt--20 fontWeight500 lineheight--1-8">Wij zijn gespecialiseerd in alle soorten (her)stofferingen. Zowel moderne als klassieke meubels, boten, campers, en caravans.</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row service-one-wrapper mt--30">
+                            {ServiceListOne.map((val, i) => (
+                                <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12" key={i}>
+                                    <div className="service service__style--1">
+                                        <div className="icon">
+                                            <img src={`/assets/images/icons/${val.icon}`} alt="Service Icon" />
+                                        </div>
+                                        <div className="content">
+                                            <h4 className="title">{val.title}</h4>
+                                            <p>{val.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                {/* End Service Area  */}
                 {/* Start Footer Style  */}
                 <FooterTwo />
                 {/* End Footer Style  */}
